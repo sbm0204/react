@@ -1,0 +1,36 @@
+import './App.css'
+
+function App() {
+    const items = [
+        {title: '바지', price: 13000},
+        {title: '티셔츠', price: 7800},
+        {title: '모자', price: 12000},
+        {title: '자켓', price: 100000},
+        {title: '스커트', price: 50000},
+        {title: '키링', price: 4000},
+        {title: '조끼', price: 60000},
+    ];
+    
+    return (
+        <>
+            <h1>리스트 렌더링</h1>
+            <div className="container">
+              {
+                items.map((item, idx) => {
+                  return (
+                    <div className="item" key={idx} >
+                      <h3>{item.title}</h3>
+                      <p>{item.price}</p>
+                    </div>
+                  );
+                })
+              }
+            </div>
+        </>
+    );
+}
+
+export default App;
+
+
+// item.id를 idx 대신 넣어줘도 된다. 만약 데이터의 id가 존재한다면.
