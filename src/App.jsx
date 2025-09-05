@@ -1,46 +1,40 @@
-import { useState } from 'react';
-import Header from "./components/Header.jsx";
-import Footer from "./components/footer.jsx";
-import ProductList from "./components/ProductList.jsx";
-import TabUi from "./components/TabUi.jsx";
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import './App.css';
 
-function App() { 
-  const [prodFlg, setProdFlg] = useState(true);
-  const [tabFlg, setTabFlg] = useState(false);
-
-  {/* 초기값으로 잡으려고. 초기값으로 item list가 제일 먼저 오게*/}
-
-  const viewProductList = () => {    
-    setProdFlg(true);
-    setTabFlg(false);
-  }
-
-  const viewTabUi = () => {
-    setProdFlg(false);
-    setTabFlg(true);
+function App() {
+  // 컴포넌트 **내부**에서 프로그래밍 방식으로 페이지 이동을 구현
+  const navigate = useNavigate();
+  
+  const ok = () => {
+      navigate('/ok');
   }
 
   return (
-  <>
-  <Header>
-
-  </Header>
-  <main>
-    <div>
-      <span onClick={viewProductList}>Item List</span>
-      <br />
-      <span onClick={viewTabUi}>Test</span>
-    </div>
-    { tabFlg && <TabUi></TabUi> }
-    { prodFlg && <ProductList></ProductList>}
-  </main>
-  <Footer>
-
-  </Footer>
-    
-  </>
-  );
+    <>
+      <header>
+        <h1>고정.앱 헤더입니다.</h1>
+        <div className="nav">
+          <Link to={'./list'} className="test">리스트 페이지</Link>
+          <br />
+          <Link to={'./detail'} className="test">상세 페이지</Link>
+          <br />
+          <NavLink to={'./list'}>리스트 페이지</NavLink>
+          <br />
+          <NavLink to={'./detail'}>상세 페이지</NavLink>
+          <br />
+          <button type="button" onClick={ok}></button>
+        </div>
+      </header>
+      <main>
+        {/* 라우터의 자식 컴포넌트를 출력해주는 것이 outlet이다. */}
+        <Outlet>
+        </Outlet>
+      </main>
+      <footer>
+        <p>고정.카피라이트 footer입니다.</p>
+      </footer>
+    </>
+  )
 }
 
 export default App;

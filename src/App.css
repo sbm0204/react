@@ -1,3 +1,7 @@
-main {
-  padding: 20px;
+.test {
+  color: lightcoral;
+}
+
+.active {
+  color: red;
 }
