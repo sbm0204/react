@@ -17,7 +17,7 @@ const detail = createSlice({
     changeNbr(state, action) {
       const regex = /^[0-9]+$/;
       if(regex.test(action.payload)) {
-        state.value = parseInt(action.payload);
+        state.nbr = parseInt(action.payload);
       // if(typeof(action.payload) === 'number') { 
       //   state.nbr = action.payload; 
       } else {
